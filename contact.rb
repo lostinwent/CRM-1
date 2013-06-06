@@ -6,11 +6,7 @@
 class Contact
 
   attr_accessor :id, :firstname, :lastname, :email, :notes
-  # @@id = 1000
 
-
-  # bob = Contact.new(1001, "bob", "romney", "mormondad@gmail.com")
-  # raise ArgumentError
   def initialize(id, firstname, lastname, email, notes)
     @id         = id
     @firstname  = firstname
@@ -29,5 +25,3 @@ class Contact
 
 end
 
-# joe = Contact.new(15, "joe", "schmoe", "email", "this is joe")
-# joe.contact_display

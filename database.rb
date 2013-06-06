@@ -7,18 +7,19 @@ require_relative "contact"
 
 class Database
 
-  attr_accessor :contacts, :refid
+  attr_accessor :contacts
 
   def initialize
     @contacts = []
   end
 
   def add(id, firstname, lastname, email, notes)
-  # refid = Contact.new(id, firstname, lastname, email, notes)
     @contacts << Contact.new(id, firstname, lastname, email, notes)
   end
 
-  def modify_contact
+  # How do you determine which Contact to modify?
+  def modify_contact(selection)#, attribute, modification)
+    puts "wat"
   end
 
   def display_all_contacts
@@ -46,28 +47,25 @@ class Database
   end
 
   def display_info_by_attribute(option)
+    result = []
+    @contacts.each do |contact|
+      if option == 1
+        result << contact.id
+      elsif option == 2
+        result << contact.firstname
+      elsif option == 3
+        result << contact.lastname
+      elsif option == 4
+        result << contact.email
+      elsif option == 5
+        result << contact.notes
+      end
+    end
 
-
-    #   if option == 1
-    #    attribute =  contact.id
-    #   elsif option == 2
-    #     attribute = contact.firstname
-    #   elsif option == 3
-    #     attribute = contact.lastname
-    #   elsif option == 4
-    #     attribute = contact.email
-    #   elsif option == 5
-    #     attribute = contact.notes
-    #   end
-    # end
-
-    # pass in an attribute
-    # return all values of this attribute
-    # @contacts.each do |contact|
-    #   if attribute == "id"
-    #     contact.id
-    #   end
-    # end
+    result.each do |res|
+      puts res
+    end
+    # result
   end
 
   def delete_contact()
@@ -78,11 +76,17 @@ end
 db = Database.new
 db.add(58, "Anish", "K", "ak@ak.com", "notes1")
 db.add(23,"betty","l","betty@betty.com","notes")
-# # # p db.contacts
-# db.display_particular_contact(2, "anish")
+db.add(01, "matt", "yo", "word@bigbird.com", "notes3")
+db.add(77, "Loser", "Double", "Me@me.com", "notes4")
+
+# p db.contacts
+# db.display_particular_contact(2, "Anish")
+# db.display_info_by_attribute(2)
 # puts @contact[0]
 # puts db.contacts[1].firstname
 # db.display_particular_contact("Anish")
 # db.display_info_by_attribute(1)
-Contact.new.id
+# Contact.new.id
+
+# p db.modify_contact("Anish")
 
