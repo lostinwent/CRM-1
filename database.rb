@@ -1,8 +1,3 @@
-# I should implement the database class as an array that accepts new contacts.
-# database class should have the following methods:
-  # "add", "modify_contact", "display_all_contacts", "display_particular_contact",
-  # "display_info_by_attribute" and "delete_contact".
-
 require_relative "contact"
 
 class Database
@@ -17,33 +12,35 @@ class Database
     @contacts << Contact.new(id, firstname, lastname, email, notes)
   end
 
-  # How do you determine which Contact to modify?
-  def modify_contact(selection)#, attribute, modification)
-    puts "wat"
+
+  # given an id, return the index of that contact
+  def contact_index_helper(id_number)
+    idx = nil
+    @contacts.each_with_index do |contact, index|
+      if contact.id == id_number
+        idx = index
+      end
+    end
+    idx
+  end
+
+  # user specifies id to look-up a contact
+  # user then specifies which attribute to modify within this contact
+  # then this modification is applied
+  def modify_contact(selection, attribute, modification)
+    index = contact_index_helper(selection)
+    @contacts[index].firstname = modification
   end
 
   def display_all_contacts
     @contacts.each do |contact|
       contact.contact_display
-      puts ""
     end
   end
 
-  # find the specific contact given... the keyword
-  def display_particular_contact(option, keyword)
-    @contacts.each do |contact|
-      if option == 1
-        contact.contact_display if keyword == contact.id
-      elsif option == 2
-        contact.contact_display if keyword == contact.firstname
-      elsif option == 3
-        contact.contact_display if keyword == contact.lastname
-      elsif option == 4
-        contact.contact_display if keyword == contact.email
-      elsif option == 5
-        contact.contact_display if keyword == contact.notes
-      end
-    end
+  def display_particular_contact(id_num)
+    index = contact_index_helper(id_num)
+    @contacts[index].contact_display unless index.nil?
   end
 
   def display_info_by_attribute(option)
@@ -62,13 +59,15 @@ class Database
       end
     end
 
-    result.each do |res|
-      puts res
-    end
+    # result.each do |res|
+    #   puts res
+    # end
+
     # result
   end
 
   def delete_contact()
+
   end
 
 end
@@ -80,13 +79,15 @@ db.add(01, "matt", "yo", "word@bigbird.com", "notes3")
 db.add(77, "Loser", "Double", "Me@me.com", "notes4")
 
 # p db.contacts
-# db.display_particular_contact(2, "Anish")
 # db.display_info_by_attribute(2)
 # puts @contact[0]
 # puts db.contacts[1].firstname
 # db.display_particular_contact("Anish")
 # db.display_info_by_attribute(1)
 # Contact.new.id
+# db.modify_contact(58, "firstname", "aoifj")
+# p db.display_particular_contact(2, "Anish")
 
-# p db.modify_contact("Anish")
+puts db.display_particular_contact(99)
+
 

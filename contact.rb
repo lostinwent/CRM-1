@@ -1,8 +1,3 @@
-# # the contact class should have five attributes: "id", "firstname", "lastname", "email" and "notes".
-# # when a user creates a contact, all five attributes are mandatory.
-# # I am able to modify those attributes at any point in the program at a later time.
-# # Contact class should also have a method that displays all of its values.
-
 class Contact
 
   attr_accessor :id, :firstname, :lastname, :email, :notes
@@ -16,11 +11,13 @@ class Contact
   end
 
   def contact_display
-   puts "ID: #{@id}"
-   puts "First name: #{@firstname}"
-   puts "Last name: #{@lastname}"
-   puts "Email: #{@email}"
-   puts "Notes: #{@notes}"
+   # puts "ID:          #{@id}"
+   # puts "First name:  #{@firstname}"
+   # puts "Last name:   #{@lastname}"
+   # puts "Email:       #{@email}"
+   # puts "Notes:       #{@notes}"
+   "ID:          #{@id}\nFirst name:  #{@firstname}\nLast name:   #{@lastname}\n"\
+   "Email:       #{@email}\nNotes:       #{@notes}\n"
   end
 
 end
