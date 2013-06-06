@@ -22,3 +22,9 @@ class Contact
 
 end
 
+
+# bob = Contact.new(50, "bob", "loblaw", "lawblog", "i love law")
+# puts bob.contact_display
+# bob.firstname = "Slob"
+# puts bob.contact_display
+

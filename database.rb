@@ -27,10 +27,22 @@ class Database
   # user specifies id to look-up a contact
   # user then specifies which attribute to modify within this contact
   # then this modification is applied
-  def modify_contact(selection, attribute, modification)
-    index = contact_index_helper(selection)
-    @contacts[index].firstname = modification
+  # def modify_contact(selection, attribute)#, modification)
+
+  def modify_contact(id_num, option, modification) # only modifies the firstname
+    index = contact_index_helper(id_num)
+    case option
+    when 1
+      @contacts[index].firstname = modification
+    when 2
+      @contacts[index].lastname = modification
+    when 3
+      @contacts[index].email = modification
+    when 4
+      @contacts[index].notes = modification
+    end
   end
+
 
   def display_all_contacts
     @contacts.each do |contact|
@@ -43,31 +55,25 @@ class Database
     @contacts[index].contact_display unless index.nil?
   end
 
+  # returns an array of the specified attribute from all contacts
   def display_info_by_attribute(option)
     result = []
     @contacts.each do |contact|
-      if option == 1
-        result << contact.id
-      elsif option == 2
+      case option
+      when 1
         result << contact.firstname
-      elsif option == 3
+      when 2
         result << contact.lastname
-      elsif option == 4
+      when 3
         result << contact.email
-      elsif option == 5
+      when 4
         result << contact.notes
       end
     end
-
-    # result.each do |res|
-    #   puts res
-    # end
-
-    # result
+    result
   end
 
   def delete_contact()
-
   end
 
 end
@@ -79,7 +85,6 @@ db.add(01, "matt", "yo", "word@bigbird.com", "notes3")
 db.add(77, "Loser", "Double", "Me@me.com", "notes4")
 
 # p db.contacts
-# db.display_info_by_attribute(2)
 # puts @contact[0]
 # puts db.contacts[1].firstname
 # db.display_particular_contact("Anish")
@@ -88,6 +93,8 @@ db.add(77, "Loser", "Double", "Me@me.com", "notes4")
 # db.modify_contact(58, "firstname", "aoifj")
 # p db.display_particular_contact(2, "Anish")
 
-puts db.display_particular_contact(99)
+# puts db.display_particular_contact(58)
+# db.modify_contact(58, 1, "PISS")
+# puts db.display_particular_contact(58)
 
 
