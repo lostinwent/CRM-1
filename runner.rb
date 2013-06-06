@@ -30,6 +30,18 @@ class Runner
 
     val = Contact.new(firstname: first_name)
 
+    # puts "Do you want to search by?"
+    # puts "1. ID"
+    # puts "2. First Name"
+    # puts "3. Last Name"
+    # puts "4. Email"
+    # puts "5. Notes"
+    # puts "Please enter a number"
+
+    # choice = gets.chomp.to_i
+    # puts "Please enter your search string"
+    # keyword = gets.chomp
+
 
     puts val.inspect
   end

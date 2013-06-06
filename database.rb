@@ -29,8 +29,33 @@ class Database
     end
   end
 
-  def display_particular_contact(keyword)
-    @contacts.find { |i| i[keyword] }
+  # find the specific contact given... the keyword
+  def display_particular_contact(option, keyword)
+
+    # puts "1. ID"
+    # puts "2. First Name"
+    # puts "3. Last Name"
+    # puts "4. Email"
+    # puts "5. Notes"
+
+
+    # i don't know where it is....how do i find it?
+    @contacts.each do |contact|
+      if option == 1
+
+      elsif option == 2
+
+      elsif option == 3
+
+      elsif option == 4
+
+      elsif option == 5
+
+
+      option = contact.firtname if choice == 2
+      contact.contact_display if option == keyword
+    end
+
   end
 
   def display_info_by_attribute
@@ -42,8 +67,12 @@ class Database
 end
 
 db = Database.new
-bob = db.add(58, "Anish", "K", "ak@ak.com", "notes1")
+db.add(58, "Anish", "K", "ak@ak.com", "notes1")
 db.add(23,"betty","l","betty@betty.com","notes")
-# p db.contacts
-p db.display_particular_contact("Anish")
-# p bob.refid
+# # # p db.contacts
+db.display_particular_contact
+# puts @contact[0]
+# puts db.contacts[1].firstname
+
+# db.display_particular_contact("Anish")
+
