@@ -1,4 +1,4 @@
-require_relative "contact"
+require "./contact.rb"
 
 class Database
 
@@ -24,22 +24,17 @@ class Database
     idx
   end
 
-  # user specifies id to look-up a contact
-  # user then specifies which attribute to modify within this contact
-  # then this modification is applied
-  # def modify_contact(selection, attribute)#, modification)
-
-  def modify_contact(id_num, option, modification) # only modifies the firstname
+  def modify_contact(id_num, option, modification)
     index = contact_index_helper(id_num)
     case option
-    when 1
-      @contacts[index].firstname = modification
-    when 2
-      @contacts[index].lastname = modification
-    when 3
-      @contacts[index].email = modification
-    when 4
-      @contacts[index].notes = modification
+      when 1
+        @contacts[index].firstname = modification
+      when 2
+        @contacts[index].lastname = modification
+      when 3
+        @contacts[index].email = modification
+      when 4
+        @contacts[index].notes = modification
     end
   end
 
@@ -60,41 +55,22 @@ class Database
     result = []
     @contacts.each do |contact|
       case option
-      when 1
-        result << contact.firstname
-      when 2
-        result << contact.lastname
-      when 3
-        result << contact.email
-      when 4
-        result << contact.notes
+        when 1
+          result << contact.firstname
+        when 2
+          result << contact.lastname
+        when 3
+          result << contact.email
+        when 4
+          result << contact.notes
       end
     end
     result
   end
 
-  def delete_contact()
+  def delete_contact(id_num)
+    index = contact_index_helper(id_num)
+    @contacts.delete_at(index)
   end
 
 end
-
-db = Database.new
-db.add(58, "Anish", "K", "ak@ak.com", "notes1")
-db.add(23,"betty","l","betty@betty.com","notes")
-db.add(01, "matt", "yo", "word@bigbird.com", "notes3")
-db.add(77, "Loser", "Double", "Me@me.com", "notes4")
-
-# p db.contacts
-# puts @contact[0]
-# puts db.contacts[1].firstname
-# db.display_particular_contact("Anish")
-# db.display_info_by_attribute(1)
-# Contact.new.id
-# db.modify_contact(58, "firstname", "aoifj")
-# p db.display_particular_contact(2, "Anish")
-
-# puts db.display_particular_contact(58)
-# db.modify_contact(58, 1, "PISS")
-# puts db.display_particular_contact(58)
-
-
